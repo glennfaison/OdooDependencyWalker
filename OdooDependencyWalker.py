@@ -73,7 +73,7 @@ def delete_folders(odoo_addon_dir, folder_list):
     for folder in folder_list:
         path = os.path.join(odoo_addon_dir, folder)
         os.system("sudo rm -r %s" % path)
-        print "Done deleting."
+        print "Deleted %s." %folder
 
 
 ########################################################################################################################
@@ -201,7 +201,7 @@ y = raw_input("\nPress any key to continue...")
 print "All modules available: "
 print sorted(all_modules)
 y = raw_input("\nPress any key to continue...")
-print "The following folders are to be deleted: \n%s" % modules_to_delete
+print "The following {} folders are to be deleted: \n{}".format(len(modules_to_delete), modules_to_delete)
 # Pick whether or not to delete folders.
 y = "X"
 while not y in ("n", "N", "y", "Y"):
