@@ -16,7 +16,13 @@ def get_dependencies(odoo_addon_dir, moduleName):
         if not ch:
             break
         text_read = text_read.__add__(ch)
-        if text_read.endswith('\'depends\':'):
+        if text_read.endswith('\'depends\''):
+            text_read = ""
+            while True:
+                ch = fp.read(1)
+                text_read = text_read.__add__(ch)
+                if ch == ':':
+                    break
             while True:
                 ch = fp.read(1)
                 if ch == '[':
