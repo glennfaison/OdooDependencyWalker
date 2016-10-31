@@ -17,10 +17,8 @@ def get_dependencies(odoo_addon_dir, moduleName):
             break
         text_read = text_read.__add__(ch)
         if text_read.endswith('\'depends\''):
-            text_read = ""
             while True:
                 ch = fp.read(1)
-                text_read = text_read.__add__(ch)
                 if ch == ':':
                     break
             while True:
@@ -202,6 +200,7 @@ print modules_needed
 y = raw_input("\nPress any key to continue...")
 print "All modules available: "
 print sorted(all_modules)
+y = raw_input("\nPress any key to continue...")
 print "The following folders are to be deleted: \n%s" % modules_to_delete
 # Pick whether or not to delete folders.
 y = "X"
