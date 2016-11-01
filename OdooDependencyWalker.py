@@ -7,7 +7,7 @@ def get_dependencies(odoo_addon_dir, moduleName):
     if moduleName == '':
         return ''
     elif not os.path.exists(module_dir):
-        print "The folder %s does not exist!" % module_dir
+        print("The folder %s does not exist!" % module_dir)
         return ''
     fp = open(module_dir)
     modules = text_read = ""
@@ -73,7 +73,7 @@ def delete_folders(odoo_addon_dir, folder_list):
     for folder in folder_list:
         path = os.path.join(odoo_addon_dir, folder)
         os.system("sudo rm -r %s" % path)
-        print "Deleted %s." %folder
+        print("Deleted %s." %folder)
 
 
 ########################################################################################################################
@@ -116,7 +116,7 @@ def is_auto_installable(odoo_addon_dir, moduleName):
     if moduleName == '':
         return ''
     elif not os.path.exists(module_dir):
-        print "The folder %s does not exist!" % module_dir
+        print("The folder %s does not exist!" % module_dir)
         return ''
     fp = open(module_dir)
     is_auto = text_read = ""
@@ -192,16 +192,16 @@ auto_installable_modules = filter_auto_installables(odoo_addon_dir, modules_need
 modules_needed = get_dependency_tree(odoo_addon_dir, auto_installable_modules, base_module)
 modules_to_delete = get_modules_to_delete(all_modules, modules_needed)
 
-print "Auto-installable modules: "
+print("Auto-installable modules: ")
 print auto_installable_modules
 y = raw_input("\nPress any key to continue...")
-print "Dependencies of current module: "
+print("Dependencies of current module: ")
 print modules_needed
 y = raw_input("\nPress any key to continue...")
-print "All modules available: "
+print("All modules available: ")
 print sorted(all_modules)
 y = raw_input("\nPress any key to continue...")
-print "The following {} folders are to be deleted: \n{}".format(len(modules_to_delete), modules_to_delete)
+print("The following {} folders are to be deleted: \n{}".format(len(modules_to_delete), modules_to_delete))
 # Pick whether or not to delete folders.
 y = "X"
 while not y in ("n", "N", "y", "Y"):
